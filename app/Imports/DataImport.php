@@ -16,10 +16,14 @@ class DataImport implements ToModel
      */
     public function model(array $row)
     {
-        return new Kelas([
-            'id' => $row[0],
-            'name' => $row[1],
-            'class' => $row[2],
-        ]);
+        if (is_numeric($row[2])) {
+            return new Kelas([
+                'id' => $row[0],
+                'name' => $row[1],
+                'class' => $row[2],
+            ]);
+        } else {
+            return null;
+        }
     }
 }

@@ -9,7 +9,7 @@
 
     <!-- Include Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    @yield('styles')
     <!-- Include your custom CSS if needed -->
     <!-- <link href="path/to/your/custom.css" rel="stylesheet"> -->
 </head>
