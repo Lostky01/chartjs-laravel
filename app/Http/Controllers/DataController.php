@@ -51,8 +51,13 @@ class DataController extends Controller
         $data = Kelas::orderBy('created_at', 'desc')->get();
         $classNames = dataKelas::whereIn('id', $data->pluck('class'))->pluck('name', 'id');
 
+        $list_kelas = dataKelas::select('datakelas.id', 'datakelas.name')
+        ->groupBy('datakelas.id', 'datakelas.name')
+        ->orderBy('datakelas.name')
+        ->get();
+
         $chartData = $this->prepareChartData();
-        return view('dashboard', compact('data', 'chartData', 'classNames'));
+        return view('dashboard', compact('data', 'chartData', 'classNames', 'list_kelas'));
     }
 
     public function create()
