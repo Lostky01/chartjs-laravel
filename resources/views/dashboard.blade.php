@@ -4,7 +4,7 @@
     <style>
         .my-custom-scrollbar {
             position: inherit;
-            height: 750px;
+            height: 790px;
             overflow: scroll;
         }
 
@@ -85,14 +85,11 @@
             background-color: #555;
         }
 
-        nav.navbar {
-            background: linear-gradient(135deg, rgb(192, 57, 43) 0%, #ffffff 100%);
-            color: white;
-        }
+
 
         body {
-            background: linear-gradient(135deg, rgb(192, 57, 43) 0%, #ffffff 100%);
-            color: white;
+            background: linear-gradient(135deg, rgb(255, 255, 255) 0%, #ffffff 100%);
+            color: rgb(24, 24, 24);
         }
            /* Outer and Inner Boxes */
            .outer-box {
@@ -116,18 +113,9 @@
 @section('content')
     <div class="container mt-4">
         <div class="row">
-            <h2>Data</h2>
             <div class="col-md-6">
+                <h2>Data</h2>
                 <div class="table-container">
-                    <div class="form-group">
-                        <select class="select-button form-control" id="select_project" placeholder="Pilih Project">
-                            <option value="" disabled selected hidden>Pilih Kelas</option>
-                            <option value="">Semua kelas</option>
-                            @foreach ($list_kelas as $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table id="studentTable" class="table table-bordered table-striped mb-0">
                             <thead>
@@ -146,7 +134,16 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-6">
+                    <div class="form-group sm-6">
+                        <select class="select-button form-control" id="select_project" placeholder="Pilih Project">
+                            <option value="" disabled selected hidden>Pilih Kelas</option>
+                            <option value="">Semua kelas</option>
+                            @foreach ($list_kelas as $item)
+                                <option value="{{ $item->name }}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    {{-- <div class="col-md-6">
                         <h2>Import Data</h2>
                         <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -162,13 +159,13 @@
                         <h2>Export Data</h2>
                         <a href="{{ route('export.excel') }}" class="btn btn-success">Export Excel</a>
                         <a href="{{ route('export.pdf') }}" class="btn btn-danger">Export PDF</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-md-6">
                 <h2>Charts</h2>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                         <div class="card">
                             <div class="circles">
                                 <div class="c"></div>
