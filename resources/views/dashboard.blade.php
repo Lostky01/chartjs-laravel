@@ -88,7 +88,7 @@
 
 
         body {
-            background: linear-gradient(135deg, rgb(255, 255, 255) 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #f5fdff 0%, #f5fdff 100%);
             color: rgb(24, 24, 24);
         }
            /* Outer and Inner Boxes */
@@ -115,6 +115,15 @@
         <div class="row">
             <div class="col-md-6">
                 <h2>Data</h2>
+                <div class="form-group col-sm-4">
+                    <select class="select-button form-control" id="select_project" placeholder="Pilih Project">
+                        <option value="" disabled selected hidden>Pilih Kelas</option>
+                        <option value="">Semua kelas</option>
+                        @foreach ($list_kelas as $item)
+                            <option value="{{ $item->name }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="table-container">
                     <div class="table-wrapper-scroll-y my-custom-scrollbar">
                         <table id="studentTable" class="table table-bordered table-striped mb-0">
@@ -134,15 +143,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="form-group sm-6">
-                        <select class="select-button form-control" id="select_project" placeholder="Pilih Project">
-                            <option value="" disabled selected hidden>Pilih Kelas</option>
-                            <option value="">Semua kelas</option>
-                            @foreach ($list_kelas as $item)
-                                <option value="{{ $item->name }}">{{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                    
                     {{-- <div class="col-md-6">
                         <h2>Import Data</h2>
                         <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
