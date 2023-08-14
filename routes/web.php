@@ -30,3 +30,4 @@ Route::get('export/excel', [DataController::class, 'exportExcel'])->name('export
 Route::get('/export-pdf', [DataController::class, 'exportPdf'])->name('export.pdf');
 Route::get('/chart/image', [DataController::class, 'chartImage'])->name('chart.image');
 
+
