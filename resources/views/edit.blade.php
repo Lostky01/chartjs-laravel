@@ -215,7 +215,7 @@
                 <div class="inner-box-specialcontent">
                     <div class="col-sm-12">
                     </div>
-                    <form action="{{ route('store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('update') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -224,7 +224,7 @@
                                         <label for="title" class="form-label">
                                             <h2 style="color: black"><strong>NAMA SISWA</strong></h2></label>
                                             <input type="password" id="input" class="form-control" name="name"
-                                                class="input" value="{{ old('name') }}">
+                                                class="input" value="{{ $item->nama }}">
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@
                                                 id="select-project" name="class">
                                                 <option value="" selected disabled>Pilih Kelas</option>
                                                 @foreach ($datakelas as $class)
-                                                    <option value="{{ $class }}">{{ $class }}</option>
+                                                    <option value="{{ $classNames[$item->class] }}">{{ $classNames[$item->class] }}</option>
                                                 @endforeach
                                             </select>
                                     </div>
@@ -255,7 +255,7 @@
                                         id="select-angkatan" name="angkatan">
                                         <option value="" selected disabled>Pilih Angkatan</option>
                                         @foreach ($dataangkatan as $angkatan)
-                                            <option value="{{ $angkatan }}">{{ $angkatan }}</option>
+                                            <option value="{{ $angkatanNames[$item->angkatan] }}">{{ $angkatanNames[$item->angkatan] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

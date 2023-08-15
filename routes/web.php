@@ -29,5 +29,7 @@ Route::post('import/excel', [DataController::class, 'importExcel'])->name('impor
 Route::get('export/excel', [DataController::class, 'exportExcel'])->name('export.excel');
 Route::get('/export-pdf', [DataController::class, 'exportPdf'])->name('export.pdf');
 Route::get('/chart/image', [DataController::class, 'chartImage'])->name('chart.image');
+Route::post('/angkatan/get-angkatan', [DataController::class, 'getAngkatan'])->name('getangkatan');
+Route::post('/angkatab/get-angkatan-edit', [DataController::class, 'getAngkatanEdit'])->name('getangkatanedit');
 
 

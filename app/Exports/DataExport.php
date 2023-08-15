@@ -16,7 +16,7 @@ class DataExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'ID', 'Name', 'Class'
+            'ID', 'Name', 'Class', 'Angkatan'
         ];
     }
 }

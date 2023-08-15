@@ -9,5 +9,6 @@ class Kelas extends Model
     protected $fillable = [
         'class',
         'name', 
+        'angkatan',
     ];
 }

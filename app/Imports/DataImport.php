@@ -16,11 +16,15 @@ class DataImport implements ToModel
      */
     public function model(array $row)
     {
-        if (is_numeric($row[2])) {
+        // Log the row for debugging
+        \Log::info('Importing row:', $row);
+
+        if (is_numeric($row[3])) {
             return new Kelas([
                 'id' => $row[0],
-                'name' => $row[1],
-                'class' => $row[2],
+                'name' => $row[1] ?? null,
+                'class' => $row[2] ?? null,
+                'angkatan' => $row[3] ?? null,
             ]);
         } else {
             return null;

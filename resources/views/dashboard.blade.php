@@ -1,265 +1,265 @@
 @extends('app-front')
 
 @section('styles')
-    <style>
-        .my-custom-scrollbar {
-            position: inherit;
-            height: 490px;
-            overflow: scroll;
-        }
+<style>
+    .my-custom-scrollbar {
+        position: inherit;
+        height: 410px;
+        overflow: scroll;
+    }
 
-        .table-wrapper-scroll-y {
-            display: block;
-        }
+    .table-wrapper-scroll-y {
+        display: block;
+    }
 
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
 
-        .container {
-            padding: 30px;
-        }
+    .container {
+        padding: 30px;
+    }
 
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+    h2 {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 
-        .card {
-            background-color: #f8f8f8;
-            border-radius: 15px;
-            /* Adjust the radius value as needed */
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-            /* Adjust the shadow properties as needed */
-            padding: 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            /* This ensures the shadow doesn't overflow */
-        }
+    .card {
+        background-color: #f8f8f8;
+        border-radius: 15px;
+        /* Adjust the radius value as needed */
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        /* Adjust the shadow properties as needed */
+        padding: 20px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        /* This ensures the shadow doesn't overflow */
+    }
 
-        .btn {
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    .btn {
+        border: none;
+        border-radius: 6px;
+        font-weight: bold;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
 
-        .btn-primary {
-            background-color: #007bff;
-            color: #fff;
-        }
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
 
-        .btn-success {
-            background-color: #28a745;
-            color: #fff;
-        }
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+    }
 
-        .btn-danger {
-            background-color: #dc3545;
-            color: #fff;
-        }
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+    }
 
-        .chart-container {
-            margin-top: 20px;
-        }
+    .chart-container {
+        margin-top: 20px;
+    }
 
-        /* Customize scrollbars */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+    /* Customize scrollbars */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
 
-        ::-webkit-scrollbar-track {
-            background-color: #f0f0f0;
-        }
+    ::-webkit-scrollbar-track {
+        background-color: #f0f0f0;
+    }
 
-        ::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 4px;
-        }
+    ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 4px;
+    }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+    }
 
 
 
-        body {
-            background: linear-gradient(135deg, #f5fbff 0%, #fff5ff 100%);
-            color: rgb(24, 24, 24);
-        }
+    body {
+        background: linear-gradient(135deg, #f5fbff 0%, #fff5ff 100%);
+        color: rgb(24, 24, 24);
+    }
 
-        .main {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5em;
-        }
+    .main {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
 
-        .up {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5em;
-        }
+    .up {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+    }
 
-        .down {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5em;
-        }
+    .down {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+    }
 
-        .card1 {
-            width: 90px;
-            height: 90px;
-            outline: none;
-            border: none;
-            background: white;
-            border-radius: 90px 5px 5px 5px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-            transition: .2s ease-in-out;
-        }
+    .card1 {
+        width: 90px;
+        height: 90px;
+        outline: none;
+        border: none;
+        background: white;
+        border-radius: 90px 5px 5px 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        transition: .2s ease-in-out;
+    }
 
-        .instagram {
-            margin-top: 1.5em;
-            margin-left: 1.2em;
-            fill: #cc39a4;
-        }
+    .instagram {
+        margin-top: 1.5em;
+        margin-left: 1.2em;
+        fill: #cc39a4;
+    }
 
-        .card2 {
-            width: 90px;
-            height: 90px;
-            outline: none;
-            border: none;
-            background: white;
-            border-radius: 5px 90px 5px 5px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-            transition: .2s ease-in-out;
-        }
+    .card2 {
+        width: 90px;
+        height: 90px;
+        outline: none;
+        border: none;
+        background: white;
+        border-radius: 5px 90px 5px 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        transition: .2s ease-in-out;
+    }
 
-        .twitter {
-            margin-top: 1.5em;
-            margin-left: -.9em;
-            fill: #03A9F4;
-        }
+    .twitter {
+        margin-top: 1.5em;
+        margin-left: -.9em;
+        fill: #03A9F4;
+    }
 
-        .card3 {
-            width: 90px;
-            height: 90px;
-            outline: none;
-            border: none;
-            background: white;
-            border-radius: 5px 5px 5px 90px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-            transition: .2s ease-in-out;
-        }
+    .card3 {
+        width: 90px;
+        height: 90px;
+        outline: none;
+        border: none;
+        background: white;
+        border-radius: 5px 5px 5px 90px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        transition: .2s ease-in-out;
+    }
 
-        .github {
-            margin-top: -.6em;
-            margin-left: 1.2em;
-        }
+    .github {
+        margin-top: -.6em;
+        margin-left: 1.2em;
+    }
 
-        .card4 {
-            width: 90px;
-            height: 90px;
-            outline: none;
-            border: none;
-            background: white;
-            border-radius: 5px 5px 90px 5px;
-            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-            transition: .2s ease-in-out;
-        }
+    .card4 {
+        width: 90px;
+        height: 90px;
+        outline: none;
+        border: none;
+        background: white;
+        border-radius: 5px 5px 90px 5px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        transition: .2s ease-in-out;
+    }
 
-        .discord {
-            margin-top: -.9em;
-            margin-left: -1.2em;
-            fill: #8c9eff;
-        }
+    .discord {
+        margin-top: -.9em;
+        margin-left: -1.2em;
+        fill: #8c9eff;
+    }
 
-        .card1:hover {
-            cursor: pointer;
-            scale: 1.1;
-            background-color: #cc39a4;
-        }
+    .card1:hover {
+        cursor: pointer;
+        scale: 1.1;
+        background-color: #cc39a4;
+    }
 
-        .card1:hover .instagram {
-            fill: white;
-        }
+    .card1:hover .instagram {
+        fill: white;
+    }
 
-        .card2:hover {
-            cursor: pointer;
-            scale: 1.1;
-            background-color: #03A9F4;
-        }
+    .card2:hover {
+        cursor: pointer;
+        scale: 1.1;
+        background-color: #03A9F4;
+    }
 
-        .card2:hover .twitter {
-            fill: white;
-        }
+    .card2:hover .twitter {
+        fill: white;
+    }
 
-        .card3:hover {
-            cursor: pointer;
-            scale: 1.1;
-            background-color: black;
-        }
+    .card3:hover {
+        cursor: pointer;
+        scale: 1.1;
+        background-color: black;
+    }
 
-        .card3:hover .github {
-            fill: white;
-        }
+    .card3:hover .github {
+        fill: white;
+    }
 
-        .card4:hover {
-            cursor: pointer;
-            scale: 1.1;
-            background-color: #8c9eff;
-        }
+    .card4:hover {
+        cursor: pointer;
+        scale: 1.1;
+        background-color: #8c9eff;
+    }
 
-        .card4:hover .discord {
-            fill: white;
-        }
+    .card4:hover .discord {
+        fill: white;
+    }
 
-        .inner-box {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid black;
-            position: relative;
-            z-index: 1;
-            position: relative;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+    .inner-box {
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid black;
+        position: relative;
+        z-index: 1;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
-        .inner-box-specialv2 {
-            background-color: #2088ff;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid black;
-            position: relative;
-            font-family: Arial, Helvetica, sans-serif;
-            box-shadow: 10px 10px 5px rgb(255, 102, 204);
-        }
+    .inner-box-specialv2 {
+        background-color: #2088ff;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid black;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 10px 10px 5px rgb(255, 102, 204);
+    }
 
-        .inner-box-specialcontent {
-            background-color: #ffffff;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid black;
-            position: relative;
-            font-family: Arial, Helvetica, sans-serif;
-            box-shadow: 7px 7px rgb(255, 102, 204);
-        }
+    .inner-box-specialcontent {
+        background-color: #ffffff;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid black;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 7px 7px rgb(255, 102, 204);
+    }
 
-        .inner-box-special {
-            background-color: #f0f0f0;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-            font-family: Arial, Helvetica, sans-serif;
-            /* box-shadow: 10px 10px 5px rgb(0, 153, 255); */
-        }
-    </style>
+    .inner-box-special {
+        background-color: #f0f0f0;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        /* box-shadow: 10px 10px 5px rgb(0, 153, 255); */
+    }
+</style>
 @endsection
 
 @section('content')
@@ -286,7 +286,7 @@
                                     lainnya, sehingga akan memudahkan programmer untuk mendevelop website mereka</p>
                             </div>
                         </div>
-                        <div class="col-sm-2" >
+                        <div class="col-sm-2">
                             <div class="main">
                                 <div class="up">
                                     <button class="card1" onclick="instagramDirect()">
@@ -338,7 +338,7 @@
                 </div>
                 <div class="col-md-8" style="">
                     <div class="inner-box-specialcontent">
-                        <h2 style="color: black"><strong>CHART GRAPH</strong></h2>
+                        <h2 style="color: black"><strong>CHART KELAS</strong></h2>
                         <div class="row">
                             <div class="row" style="width: 50%; height: 100%;">
                                 <div class="col-md-6">
@@ -370,7 +370,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="inner-box-specialcontent">
-                        <h2 style="color: black"><strong>DATA TABLE</strong></h2>
+                        <h2 style="color: black"><strong>TABLE KELAS</strong></h2>
                         <div class="table-container">
                             <div class="table-wrapper-scroll-y my-custom-scrollbar">
                                 <table id="studentTable" class="table table-bordered table-striped mb-0">
@@ -393,6 +393,63 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-8" style="">
+                    <div class="inner-box-specialcontent">
+                        <h2 style="color: black"><strong>CHART ANGKATAN</strong></h2>
+                        <div class="row">
+                            <div class="row" style="width: 50%; height: 100%;">
+                                <div class="col-md-6">
+                                    <div class="chart">
+                                        <canvas id="myChartAngkatan" width="200" height="360"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="chart">
+                                        <canvas id="pieChartAngkatan" width="200" height="360"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" style="width: 50%; height: 90%;">
+                                <div class="col-md-6">
+                                    <div class="chart">
+                                        <canvas id="radarChartAngkatan" width="250" height="360"></canvas>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="chart">
+                                        <canvas id="lineChartAngkatan" width="250" height="360"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="inner-box-specialcontent">
+                        <h2 style="color: black"><strong>TABLE ANGKATAN</strong></h2>
+                        <div class="table-container">
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table id="studentTable" class="table table-bordered table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>Angkatan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data as $item)
+                                            <tr style="height: 0px">
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $angkatanNames[$item->angkatan] }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -401,27 +458,30 @@
 @endsection
 
 @section('js-after')
-    <!-- Include your custom JS for chart rendering -->
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function instagramDirect() {
             window.location.href = "https://www.instagram.com/lostky77/";
         }
+
         function discordDirect() {
             window.location.href = "https://discordlookup.com/user/972888034813030440";
         }
+
         function twitterDirect() {
             window.location.href = "https://twitter.com/DRifkyx";
         }
+
         function githubDirect() {
             window.location.href = "https://www.github.com/Lostky01";
         }
+        //CHART FOR CLASS
         var chartData = @json($chartData);
 
         var labels = chartData.map(entry => entry.class_name);
         var data = chartData.map(entry => entry.student_count);
 
-        // Get canvas element and create the chart
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'bar', // You can change the chart type if needed
@@ -555,6 +615,173 @@
                 datasets: [{
                     label: 'Jumlah Murid',
                     data: data,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)', // Red
+                        'rgb(54, 162, 235)', // Blue
+                        'rgb(255, 205, 86)', // Yellow
+                        'rgb(75, 192, 192)', // Teal
+                        'rgb(153, 102, 255)', // Purple
+                        'rgb(255, 159, 64)', // Orange
+                        'rgb(0, 204, 102)', // Green
+                        'rgb(255, 77, 77)', // Light Red
+                        'rgb(0, 153, 153)', // Dark Teal
+                        'rgb(255, 153, 204)', // Pink
+                        'rgb(46, 204, 113)', // Emerald Green
+                        'rgb(241, 196, 15)', // Yellow (Vibrant)
+                        'rgb(52, 152, 219)', // Light Blue
+                        'rgb(243, 156, 18)', // Orange (Vibrant)
+                        'rgb(22, 160, 133)', // Green Sea
+                        'rgb(230, 126, 34)', // Carrot Orange
+                        'rgb(192, 57, 43)', // Pomegranate
+                        'rgb(155, 89, 182)', // Wisteria Purple
+                        'rgb(26, 188, 156)', // Turquoise
+                        'rgb(41, 128, 185)', // Belize Hole Blue
+                        // Add more colors here
+                    ],
+                    borderColor: 'rgb(205,133,63)',
+                    borderWidth: 1
+                }]
+            }
+        });
+        //CHART FOR ANGKATAN
+        var chartDataAngkatan = @json($chartDataAngkatan);
+
+        var labelsangkatan = chartDataAngkatan.map(entry => entry.angkatan_name);
+        var dataangkatan = chartDataAngkatan.map(entry => entry.angkatan_count);
+
+        var ctxangkatan = document.getElementById('myChartAngkatan').getContext('2d');
+        var myChartAngkatan = new Chart(ctxangkatan, {
+            type: 'bar', // You can change the chart type if needed
+            data: {
+                labels: labelsangkatan,
+                datasets: [{
+                    label: 'Jumlah Murid',
+                    data: dataangkatan,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)', // Red
+                        'rgb(54, 162, 235)', // Blue
+                        'rgb(255, 205, 86)', // Yellow
+                        'rgb(75, 192, 192)', // Teal
+                        'rgb(153, 102, 255)', // Purple
+                        'rgb(255, 159, 64)', // Orange
+                        'rgb(0, 204, 102)', // Green
+                        'rgb(255, 77, 77)', // Light Red
+                        'rgb(0, 153, 153)', // Dark Teal
+                        'rgb(255, 153, 204)', // Pink
+                        'rgb(46, 204, 113)', // Emerald Green
+                        'rgb(241, 196, 15)', // Yellow (Vibrant)
+                        'rgb(52, 152, 219)', // Light Blue
+                        'rgb(243, 156, 18)', // Orange (Vibrant)
+                        'rgb(22, 160, 133)', // Green Sea
+                        'rgb(230, 126, 34)', // Carrot Orange
+                        'rgb(192, 57, 43)', // Pomegranate
+                        'rgb(155, 89, 182)', // Wisteria Purple
+                        'rgb(26, 188, 156)', // Turquoise
+                        'rgb(41, 128, 185)', // Belize Hole Blue
+                        // Add more colors here
+                    ],
+                    borderColor: 'rgb(205,133,63)', // Adjust color as needed
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 50,
+                        ticks: {
+                            stepSize: 10
+                        }
+                    }
+                }
+            }
+        });
+        var pieCtxangkatan = document.getElementById('pieChartAngkatan').getContext('2d');
+        var pieChartAngkatan = new Chart(pieCtxangkatan, {
+            type: 'pie',
+            data: {
+                labels: labelsangkatan,
+                datasets: [{
+                    label: 'Jumlah Murid',
+                    data: dataangkatan,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)', // Red
+                        'rgb(54, 162, 235)', // Blue
+                        'rgb(255, 205, 86)', // Yellow
+                        'rgb(75, 192, 192)', // Teal
+                        'rgb(153, 102, 255)', // Purple
+                        'rgb(255, 159, 64)', // Orange
+                        'rgb(0, 204, 102)', // Green
+                        'rgb(255, 77, 77)', // Light Red
+                        'rgb(0, 153, 153)', // Dark Teal
+                        'rgb(255, 153, 204)', // Pink
+                        'rgb(46, 204, 113)', // Emerald Green
+                        'rgb(241, 196, 15)', // Yellow (Vibrant)
+                        'rgb(52, 152, 219)', // Light Blue
+                        'rgb(243, 156, 18)', // Orange (Vibrant)
+                        'rgb(22, 160, 133)', // Green Sea
+                        'rgb(230, 126, 34)', // Carrot Orange
+                        'rgb(192, 57, 43)', // Pomegranate
+                        'rgb(155, 89, 182)', // Wisteria Purple
+                        'rgb(26, 188, 156)', // Turquoise
+                        'rgb(41, 128, 185)', // Belize Hole Blue
+                        // Add more colors here
+                    ],
+                    borderColor: 'rgb(205,133,63)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Radar Chart
+        var radarCtxangkatan = document.getElementById('radarChartAngkatan').getContext('2d');
+        var radarChartAngkatan = new Chart(radarCtxangkatan, {
+            type: 'radar',
+            data: {
+                labels: labelsangkatan,
+                datasets: [{
+                    label: 'Jumlah Murid',
+                    data: dataangkatan,
+                    backgroundColor: [
+                        'rgb(255, 99, 132)', // Red
+                        'rgb(54, 162, 235)', // Blue
+                        'rgb(255, 205, 86)', // Yellow
+                        'rgb(75, 192, 192)', // Teal
+                        'rgb(153, 102, 255)', // Purple
+                        'rgb(255, 159, 64)', // Orange
+                        'rgb(0, 204, 102)', // Green
+                        'rgb(255, 77, 77)', // Light Red
+                        'rgb(0, 153, 153)', // Dark Teal
+                        'rgb(255, 153, 204)', // Pink
+                        'rgb(46, 204, 113)', // Emerald Green
+                        'rgb(241, 196, 15)', // Yellow (Vibrant)
+                        'rgb(52, 152, 219)', // Light Blue
+                        'rgb(243, 156, 18)', // Orange (Vibrant)
+                        'rgb(22, 160, 133)', // Green Sea
+                        'rgb(230, 126, 34)', // Carrot Orange
+                        'rgb(192, 57, 43)', // Pomegranate
+                        'rgb(155, 89, 182)', // Wisteria Purple
+                        'rgb(26, 188, 156)', // Turquoise
+                        'rgb(41, 128, 185)', // Belize Hole Blue
+                        // Add more colors here
+                    ],
+                    borderColor: 'rgb(205,133,63)',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // Line Chart
+        var lineCtxangkatan = document.getElementById('lineChartAngkatan').getContext('2d');
+        var lineChartAngkatan = new Chart(lineCtxangkatan, {
+            type: 'line',
+            data: {
+                labels: labelsangkatan,
+                datasets: [{
+                    label: 'Jumlah Murid',
+                    data: dataangkatan,
                     backgroundColor: [
                         'rgb(255, 99, 132)', // Red
                         'rgb(54, 162, 235)', // Blue

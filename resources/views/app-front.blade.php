@@ -11,6 +11,38 @@
             background: linear-gradient(135deg, rgb(250, 156, 156)5) 0%, #ffffff 100%);
             color: white;
         }
+
+        .buttonhovered {
+            align-items: center;
+            background-color: transparent;
+            color: #000000;
+            cursor: pointer;
+            display: flex;
+            font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            text-decoration: none;
+            text-transform: uppercase;
+            outline: 0;
+            border: 0;
+            padding: 1rem;
+        }
+
+        .buttonhovered:before {
+            background-color: rgb(213, 39, 39);
+            content: "";
+            display: inline-block;
+            height: 1px;
+            margin-right: 10px;
+            transition: all .42s cubic-bezier(.25, .8, .25, 1);
+            width: 0;
+        }
+
+        .buttonhovered:hover:before {
+            background-color: #000000;
+            width: 3rem;
+        }
     </style>
 
     <!-- Include Bootstrap CSS -->
@@ -34,24 +66,22 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-black btn-rounded" href="{{ route('dashboard') }}">Home</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a class="btn btn-black btn-rounded" href="{{ route('create') }}">Add new data</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a href="{{ route('export.excel') }}" class="btn btn-black btn-rounded">Export data ke
-                                Excel</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a href="{{ route('export.pdf') }}" class="btn btn-black btn-rounded">Export data ke PDF</a>
-                        </li>
-                        <li class="nav-item ms-3">
-                            <a href="#" class="btn btn-black btn-rounded" id="importButtonNavbar">Import data dari
-                                Excel</a>
+                        <button class="buttonhovered" onclick="DataHome();">
+                            Home
+                        </button>
+                        <button class="buttonhovered" onclick="CreateData();">
+                            Create new data
+                        </button>
+                        <button class="buttonhovered" onclick="ExportExcel();">
+                            Export data to excel
+                        </button>
+                        <button class="buttonhovered" onclick="ExportPdf();">
+                            Export data to pdf
+                        </button>
+                        <button class="buttonhovered" id="importButtonNavbar">
                             <input type="file" id="importFile" accept=".xls, .xlsx" style="display: none;">
-                        </li>
+                            Import data from excel
+                        </button>
                     </ul>
                 </div>
             </div>
@@ -68,6 +98,16 @@
 </body>
 
 <script>
+
+    function CreateData() {
+        window.location.href = "{{ route('create') }}";
+    }
+    function ExportExcel() {
+        window.location.href = "{{ route('export.excel') }}";
+    }
+    function ExportPdf() {
+        window.location.href = "{{ route('export.pdf') }}";
+    }
     document.getElementById('importFile').addEventListener('change', function() {
         console.log("File terpanggil")
         if (this.files.length > 0) {
