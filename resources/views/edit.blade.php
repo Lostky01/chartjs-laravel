@@ -220,7 +220,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="inner-box-specialv2">
-                                    <div class="col-sm-4">
+                                    <div class="col-md-6">
                                         <label for="title" class="form-label">
                                             <h2 style="color: black"><strong>NAMA SISWA</strong></h2></label>
                                             <input type="password" id="input" class="form-control" name="name"

@@ -393,6 +393,7 @@
                         </div>
                     </div>
                 </div>
+                <br><br><br><br>
                 <div class="col-md-8" style="">
                     <div class="inner-box-specialcontent">
                         <h2 style="color: black"><strong>CHART ANGKATAN</strong></h2>

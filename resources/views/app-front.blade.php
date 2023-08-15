@@ -99,6 +99,9 @@
 
 <script>
 
+    function DataHome() {
+        window.location.href = "{{ route('dashboard') }}"
+    }
     function CreateData() {
         window.location.href = "{{ route('create') }}";
     }
