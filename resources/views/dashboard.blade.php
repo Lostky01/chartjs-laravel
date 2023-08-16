@@ -1,265 +1,423 @@
 @extends('app-front')
 
 @section('styles')
-<style>
-    .my-custom-scrollbar {
-        position: inherit;
-        height: 410px;
-        overflow: scroll;
-    }
+    <style>
+        .my-custom-scrollbar {
+            position: inherit;
+            height: 550px;
+            overflow: scroll;
+        }
 
-    .table-wrapper-scroll-y {
-        display: block;
-    }
+        .table-wrapper-scroll-y {
+            display: block;
+        }
 
-    body {
-        font-family: 'Roboto', Arial, sans-serif;
-        background-color: #f0f0f0;
-    }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
 
-    .container {
-        padding: 30px;
-    }
+        .container {
+            padding: 30px;
+        }
 
-    h2 {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 20px;
-    }
+        h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-    .card {
-        background-color: #f8f8f8;
-        border-radius: 15px;
-        /* Adjust the radius value as needed */
-        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-        /* Adjust the shadow properties as needed */
-        padding: 20px;
-        margin-bottom: 20px;
-        overflow: hidden;
-        /* This ensures the shadow doesn't overflow */
-    }
+        .card {
+            background-color: #f8f8f8;
+            border-radius: 15px;
+            /* Adjust the radius value as needed */
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            /* Adjust the shadow properties as needed */
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            /* This ensures the shadow doesn't overflow */
+        }
 
-    .btn {
-        border: none;
-        border-radius: 6px;
-        font-weight: bold;
-        padding: 10px 20px;
-        cursor: pointer;
-        transition: background-color 0.3s, color 0.3s;
-    }
+        .btn {
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
 
-    .btn-primary {
-        background-color: #007bff;
-        color: #fff;
-    }
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
 
-    .btn-success {
-        background-color: #28a745;
-        color: #fff;
-    }
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+        }
 
-    .btn-danger {
-        background-color: #dc3545;
-        color: #fff;
-    }
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
 
-    .chart-container {
-        margin-top: 20px;
-    }
+        .chart-container {
+            margin-top: 20px;
+        }
 
-    /* Customize scrollbars */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
+        /* Customize scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-    ::-webkit-scrollbar-track {
-        background-color: #f0f0f0;
-    }
+        ::-webkit-scrollbar-track {
+            background-color: #f0f0f0;
+        }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: #888;
-        border-radius: 4px;
-    }
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
 
-    ::-webkit-scrollbar-thumb:hover {
-        background-color: #555;
-    }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
 
 
 
-    body {
-        background: linear-gradient(135deg, #f5fbff 0%, #fff5ff 100%);
-        color: rgb(24, 24, 24);
-    }
+        body {
+            background: linear-gradient(135deg, #f5fbff 0%, #fff5ff 100%);
+            color: rgb(24, 24, 24);
+        }
 
-    .main {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5em;
-    }
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+        }
 
-    .up {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5em;
-    }
+        .up {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5em;
+        }
 
-    .down {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5em;
-    }
+        .down {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5em;
+        }
 
-    .card1 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 90px 5px 5px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-    }
+        .card1 {
+            width: 90px;
+            height: 90px;
+            outline: none;
+            border: none;
+            background: white;
+            border-radius: 90px 5px 5px 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            transition: .2s ease-in-out;
+        }
 
-    .instagram {
-        margin-top: 1.5em;
-        margin-left: 1.2em;
-        fill: #cc39a4;
-    }
+        .instagram {
+            margin-top: 1.5em;
+            margin-left: 1.2em;
+            fill: #cc39a4;
+        }
 
-    .card2 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 90px 5px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-    }
+        .card2 {
+            width: 90px;
+            height: 90px;
+            outline: none;
+            border: none;
+            background: white;
+            border-radius: 5px 90px 5px 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            transition: .2s ease-in-out;
+        }
 
-    .twitter {
-        margin-top: 1.5em;
-        margin-left: -.9em;
-        fill: #03A9F4;
-    }
+        .twitter {
+            margin-top: 1.5em;
+            margin-left: -.9em;
+            fill: #03A9F4;
+        }
 
-    .card3 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 5px 5px 90px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-    }
+        .card3 {
+            width: 90px;
+            height: 90px;
+            outline: none;
+            border: none;
+            background: white;
+            border-radius: 5px 5px 5px 90px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            transition: .2s ease-in-out;
+        }
 
-    .github {
-        margin-top: -.6em;
-        margin-left: 1.2em;
-    }
+        .github {
+            margin-top: -.6em;
+            margin-left: 1.2em;
+        }
 
-    .card4 {
-        width: 90px;
-        height: 90px;
-        outline: none;
-        border: none;
-        background: white;
-        border-radius: 5px 5px 90px 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        transition: .2s ease-in-out;
-    }
+        .card4 {
+            width: 90px;
+            height: 90px;
+            outline: none;
+            border: none;
+            background: white;
+            border-radius: 5px 5px 90px 5px;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            transition: .2s ease-in-out;
+        }
 
-    .discord {
-        margin-top: -.9em;
-        margin-left: -1.2em;
-        fill: #8c9eff;
-    }
+        .discord {
+            margin-top: -.9em;
+            margin-left: -1.2em;
+            fill: #8c9eff;
+        }
 
-    .card1:hover {
-        cursor: pointer;
-        scale: 1.1;
-        background-color: #cc39a4;
-    }
+        .card1:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #cc39a4;
+        }
 
-    .card1:hover .instagram {
-        fill: white;
-    }
+        .card1:hover .instagram {
+            fill: white;
+        }
 
-    .card2:hover {
-        cursor: pointer;
-        scale: 1.1;
-        background-color: #03A9F4;
-    }
+        .card2:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #03A9F4;
+        }
 
-    .card2:hover .twitter {
-        fill: white;
-    }
+        .card2:hover .twitter {
+            fill: white;
+        }
 
-    .card3:hover {
-        cursor: pointer;
-        scale: 1.1;
-        background-color: black;
-    }
+        .card3:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: black;
+        }
 
-    .card3:hover .github {
-        fill: white;
-    }
+        .card3:hover .github {
+            fill: white;
+        }
 
-    .card4:hover {
-        cursor: pointer;
-        scale: 1.1;
-        background-color: #8c9eff;
-    }
+        .card4:hover {
+            cursor: pointer;
+            scale: 1.1;
+            background-color: #8c9eff;
+        }
 
-    .card4:hover .discord {
-        fill: white;
-    }
+        .card4:hover .discord {
+            fill: white;
+        }
 
-    .inner-box {
-        background-color: #f0f0f0;
-        padding: 20px;
-        border-radius: 10px;
-        border: 2px solid black;
-        position: relative;
-        z-index: 1;
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+        .inner-box {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black;
+            position: relative;
+            z-index: 1;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    .inner-box-specialv2 {
-        background-color: #2088ff;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        border: 2px solid black;
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-        box-shadow: 10px 10px 5px rgb(255, 102, 204);
-    }
+        .inner-box-specialv2 {
+            background-color: #2088ff;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 10px 10px 5px rgb(255, 102, 204);
+        }
 
-    .inner-box-specialcontent {
-        background-color: #ffffff;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        border: 2px solid black;
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-        box-shadow: 7px 7px rgb(255, 102, 204);
-    }
+        .inner-box-specialcontent {
+            background-color: #ffffff;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid black;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            box-shadow: 7px 7px rgb(255, 102, 204);
+        }
 
-    .inner-box-special {
-        background-color: #f0f0f0;
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        position: relative;
-        font-family: Arial, Helvetica, sans-serif;
-        /* box-shadow: 10px 10px 5px rgb(0, 153, 255); */
-    }
-</style>
+        .inner-box-special {
+            background-color: #f0f0f0;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            font-family: Arial, Helvetica, sans-serif;
+            /* box-shadow: 10px 10px 5px rgb(0, 153, 255); */
+        }
+
+        .buttonedit {
+            padding: 0;
+            margin: 0;
+            border: none;
+            background: none;
+        }
+
+        .buttonedit {
+            --primary-color: #111;
+            --hovered-color: #c84747;
+            position: relative;
+            display: flex;
+            font-weight: 600;
+            font-size: 20px;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .buttonedit p {
+            margin: 0;
+            position: relative;
+            font-size: 20px;
+            color: var(--primary-color)
+        }
+
+        .buttonedit::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            left: 0;
+            bottom: -7px;
+            background: var(--hovered-color);
+            height: 2px;
+            transition: 0.3s ease-out;
+        }
+
+        .buttonedit p::before {
+            position: absolute;
+            /*   box-sizing: border-box; */
+            content: "Edit Table";
+            width: 0%;
+            inset: 0;
+            color: var(--hovered-color);
+            overflow: hidden;
+            transition: 0.3s ease-out;
+        }
+
+        .buttonedit:hover::after {
+            width: 100%;
+        }
+
+        .buttonedit:hover p::before {
+            width: 100%;
+        }
+
+        .buttonedit:hover svg {
+            transform: translateX(4px);
+            color: var(--hovered-color)
+        }
+
+        .buttonedit svg {
+            color: var(--primary-color);
+            transition: 0.2s;
+            position: relative;
+            width: 15px;
+            transition-delay: 0.2s;
+        }
+
+        .btndelete {
+            background-color: transparent;
+            position: relative;
+            border: none;
+        }
+
+        .btndelete::after {
+            content: 'delete';
+            position: absolute;
+            top: -130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            height: fit-content;
+            background-color: rgb(168, 7, 7);
+            padding: 4px 8px;
+            border-radius: 5px;
+            transition: .2s linear;
+            transition-delay: .2s;
+            color: white;
+            text-transform: uppercase;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .icon {
+            transform: scale(1.2);
+            transition: .2s linear;
+        }
+
+        .btndelete:hover>.icon {
+            transform: scale(1.5);
+        }
+
+        .btndelete:hover>.icon path {
+            fill: rgb(168, 7, 7);
+        }
+
+        .btndelete:hover::after {
+            visibility: visible;
+            opacity: 1;
+            top: -160%;
+        }
+
+        .btndeletev2 {
+            background-color: transparent;
+            position: relative;
+            border: none;
+        }
+
+        .btndeletev2::after {
+            content: 'EDIT';
+            position: absolute;
+            top: -130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            height: fit-content;
+            background-color: rgb(60, 147, 247);
+            padding: 4px 8px;
+            border-radius: 5px;
+            transition: .2s linear;
+            transition-delay: .2s;
+            color: white;
+            text-transform: uppercase;
+            font-size: 12px;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .iconv2 {
+            transform: scale(1.2);
+            transition: .2s linear;
+        }
+
+        .btndeletev2:hover>.iconv2 {
+            transform: scale(1.5);
+        }
+
+        .btndeletev2:hover>.iconv2 path {
+            fill: rgb(60, 147, 247);
+        }
+
+        .btndeletev2:hover::after {
+            visibility: visible;
+            opacity: 1;
+            top: -160%;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -378,6 +536,8 @@
                                         <tr>
                                             <th>Nama</th>
                                             <th>Kelas</th>
+                                            <th>Angkatan</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -385,6 +545,38 @@
                                             <tr style="height: 0px">
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $classNames[$item->class] }}</td>
+                                                <td>{{ $angkatanNames[$item->angkatan] }}</td>
+                                                <td>
+                                                    <div class="row">
+                                                        <div class="col-sm-3">
+                                                            <button class="btndeletev2"
+                                                                onclick="editDirect({{ $item->id }})">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                    height="16" fill="currentColor"
+                                                                    class="iconv2 bi bi-pencil" viewBox="0 0 16 16">
+                                                                    <path
+                                                                        d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-sm-2">
+                                                            <form action="{{ route('destroy', $item->id) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                @METHOD('DELETE')
+                                                                <button class="btndelete" type="submit">
+                                                                    <svg viewBox="0 0 15 17.5" height="17.5"
+                                                                        width="15" xmlns="http://www.w3.org/2000/svg"
+                                                                        class="icon">
+                                                                        <path transform="translate(-2.5 -1.25)"
+                                                                            d="M15,18.75H5A1.251,1.251,0,0,1,3.75,17.5V5H2.5V3.75h15V5H16.25V17.5A1.251,1.251,0,0,1,15,18.75ZM5,5V17.5H15V5Zm7.5,10H11.25V7.5H12.5V15ZM8.75,15H7.5V7.5H8.75V15ZM12.5,2.5h-5V1.25h5V2.5Z"
+                                                                            id="Fill"></path>
+                                                                    </svg>
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -393,8 +585,7 @@
                         </div>
                     </div>
                 </div>
-                <br><br><br><br>
-                <div class="col-md-8" style="">
+                <div class="col-md-8" style="margin-top:2%">
                     <div class="inner-box-specialcontent">
                         <h2 style="color: black"><strong>CHART ANGKATAN</strong></h2>
                         <div class="row">
@@ -426,31 +617,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="inner-box-specialcontent">
-                        <h2 style="color: black"><strong>TABLE ANGKATAN</strong></h2>
-                        <div class="table-container">
-                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                                <table id="studentTable" class="table table-bordered table-striped mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama</th>
-                                            <th>Angkatan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($data as $item)
-                                            <tr style="height: 0px">
-                                                <td>{{ $item->name }}</td>
-                                                <td>{{ $angkatanNames[$item->angkatan] }}</td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -459,7 +625,6 @@
 @endsection
 
 @section('js-after')
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function instagramDirect() {
@@ -477,6 +642,16 @@
         function githubDirect() {
             window.location.href = "https://www.github.com/Lostky01";
         }
+
+        function editDirect(id) {
+            window.location.href = "{{ route('edit', ['id' => ':id']) }}".replace(':id', id);
+        }
+
+
+        function DeleteData(id) {
+            window.location.href = "{{ route('destroy', ['id' => ':id']) }}";
+        }
+
         //CHART FOR CLASS
         var chartData = @json($chartData);
 
@@ -691,7 +866,7 @@
                     y: {
                         beginAtZero: true,
                         min: 0,
-                        max: 50,
+                        max: 1000,
                         ticks: {
                             stepSize: 10
                         }

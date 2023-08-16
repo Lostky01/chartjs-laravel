@@ -336,7 +336,7 @@
                                         <label for="title" class="form-label">
                                             <h2 style="color: black"><strong>NAMA SISWA</strong></h2>
                                         </label>
-                                        <input type="password" id="input" class="form-control" name="name"
+                                        <input type="text" id="input" class="form-control" name="name"
                                             class="input" value="{{ old('name') }}">
                                     </div>
                                 </div>

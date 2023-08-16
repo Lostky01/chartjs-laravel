@@ -115,10 +115,19 @@ class DataController extends Controller
         return redirect()->route('dashboard')->with('success', 'Information created successfully.');
     }
 
+    public function edit($id)
+    {
+        $kelas = Kelas::findOrFail($id);
+        $dataKelas = dataKelas::pluck('name', 'id');
+        $dataAngkatan = dataAngkatan::pluck('name', 'id');
+        return view('edit', compact('kelas', 'dataKelas', 'dataAngkatan'));
+    }
+
+
+
     public function update(Request $request, $id)
     {
         $kelas = Kelas::findOrFail($id);
-
         $request->validate([
             'name' => 'required',
             'class' => 'required',
@@ -126,14 +135,10 @@ class DataController extends Controller
         ]);
 
         $kelas->name = $request->input('name');
-        $dataKelas = dataKelas::where('name', $request->input('class'))->first();
-        if ($dataKelas) {
-            $kelas->class = $dataKelas->id;
-        }
-        $dataAngkatan =  dataAngkatan::where('name', $request->input('angkatan'))->first();
-        if($dataAngkatan) {
-            $kelas->angkatan = $dataAngkatan->id;
-        }
+        $kelas->class = $request->input('class');
+        $kelas->angkatan = $request->input('angkatan');
+
+        /* dd($request->all()); */
         $kelas->save();
 
         return redirect()->route('dashboard')->with('success', 'Information updated successfully.');
@@ -145,13 +150,10 @@ class DataController extends Controller
         $classNames = dataKelas::whereIn('id', $data->pluck('class'))->pluck('name', 'id');
         $angkatanNames = dataAngkatan::whereIn('id', $data->pluck('angkatan'))->pluck('name', 'id');
         $chartData = $this->prepareChartData();
-    
-        $pdf = PDF::loadView('pdf', compact('data', 'classNames','angkatanNames', 'chartData'));
+
+        $pdf = PDF::loadView('pdf', compact('data', 'classNames', 'angkatanNames', 'chartData'));
         return $pdf->download('data.pdf');
     }
-    
-
-
 
 
     public function destroy($id)

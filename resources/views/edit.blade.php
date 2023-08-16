@@ -147,6 +147,7 @@
         #input:focus {
             border: 2px solid var(--input-focus);
         }
+
         #select-project {
             /* --input-focus: #2d8cf0; */
             --font-color: #323232;
@@ -174,6 +175,7 @@
         #select-project {
             border: 2px solid var(--input-focus);
         }
+
         #select-angkatan {
             /* --input-focus: #2d8cf0; */
             --font-color: #323232;
@@ -208,70 +210,73 @@
     <div class="container mt-4">
         <div class="outer-box">
             <button data-text="Awesome" class="button" style="margin-left: 2%">
-                <span class="actual-text">&nbsp;create&nbsp;</span>
-                <span class="hover-text" aria-hidden="true">&nbsp;create&nbsp;</span>
+                <span class="actual-text">&nbsp;edit&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;edit&nbsp;</span>
             </button>
             <div class="inner-box">
                 <div class="inner-box-specialcontent">
-                    <div class="col-sm-12">
-                    </div>
-                    <form action="{{ route('update') }}" method="post" enctype="multipart/form-data">
+                    <div class="col-sm-12"></div>
+                    <form action="{{ route('update', $kelas->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 mb-3">
                                 <div class="inner-box-specialv2">
                                     <div class="col-md-6">
                                         <label for="title" class="form-label">
-                                            <h2 style="color: black"><strong>NAMA SISWA</strong></h2></label>
-                                            <input type="password" id="input" class="form-control" name="name"
-                                                class="input" value="{{ $item->nama }}">
+                                            <h2 style="color: black"><strong>NAMA SISWA</strong></h2>
+                                        </label>
+                                        <input type="text" id="input" value="{{ $kelas->name }}" name="name">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6 mb-3">
                                 <div class="inner-box-specialv2">
                                     <div class="col-sm-3 select-input">
                                         <label for="title" class="form-label">
-                                            <h2 style="color: black"><strong>NAMA KELAS</strong></h2>/label>
-                                            <select class="js-example-basic-single form-control"
-                                                id="select-project" name="class">
-                                                <option value="" selected disabled>Pilih Kelas</option>
-                                                @foreach ($datakelas as $class)
-                                                    <option value="{{ $classNames[$item->class] }}">{{ $classNames[$item->class] }}</option>
-                                                @endforeach
-                                            </select>
+                                            <h2 style="color: black"><strong>NAMA KELAS</strong></h2>
+                                        </label>
+                                        <select class="js-example-basic-single form-control" id="select-project" name="class">
+                                            <option value="" selected disabled>Pilih Kelas</option>
+                                            @foreach ($dataKelas as $classId => $className)
+                                                <option value="{{ $classId }}"
+                                                    {{ $kelas->class == $classId ? 'selected' : '' }}>
+                                                    {{ $className }}
+                                                </option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="col-md-10">
-                            <div class="inner-box-specialv2" style=>
-                                <div class="col-sm-3 select-input">
-                                    <label for="title" class="form-label">
-                                        <h2 style="color: black"><strong>ANGKATAN</strong></h2>
-                                    </label>
-                                    <select class="js-example-basic-single form-control"
-                                        id="select-angkatan" name="angkatan">
-                                        <option value="" selected disabled>Pilih Angkatan</option>
-                                        @foreach ($dataangkatan as $angkatan)
-                                            <option value="{{ $angkatanNames[$item->angkatan] }}">{{ $angkatanNames[$item->angkatan] }}</option>
-                                        @endforeach
-                                    </select>
+                            <div class="col-md-10 mb-3">
+                                <div class="inner-box-specialv2">
+                                    <div class="col-sm-3 select-input">
+                                        <label for="title" class="form-label">
+                                            <h2 style="color: black"><strong>ANGKATAN</strong></h2>
+                                        </label>
+                                        <select class="js-example-basic-single form-control" id="select-angkatan" name="angkatan">
+                                            <option value="" selected disabled>Pilih Angkatan</option>
+                                            @foreach ($dataAngkatan as $angkatanId => $angkatanName)
+                                                <option value="{{ $angkatanId }}"
+                                                    {{ $kelas->angkatan == $angkatanId ? 'selected' : '' }}>
+                                                    {{ $angkatanName }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
-                        <div class="col-sm-3">
-                            <div class="submit-button text-right responsive-button">
-                                <button type="submit" class="buttonadd">
-                                    ADD TO LIST
-                                </button>
+                            <div class="col-sm-3 mb-3">
+                                <div class="submit-button text-right responsive-button">
+                                    <button type="submit" class="buttonadd">
+                                        ADD TO LIST
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 @endsection
@@ -282,59 +287,6 @@
     <script>
         tinymce.init({
             selector: '#mytextarea_pertanyaan, #mytextarea_jawaban'
-        });
-
-        $("#select-project").on('change', function() {
-            var id = this.value;
-            console.log(id);
-            $.ajax({
-                method: 'get',
-                url: "{{ route('getkelas', ':id') }}".replace(':id', id), // Pass the id parameter
-                success: function(result) {
-                    if (result.msg == 'berhasil') {
-                        $('#select-domain').find('option').remove().end();
-                        $('#select-domain').append(result.data);
-                    } else {
-                        $('#select-domain').find('option').remove().end();
-                        $('#select-domain').append(result.data);
-                        $('#select-domain').trigger('change');
-                        $('#select-domain').select2({
-                            theme: "bootstrap",
-                            width: "100%"
-                        });
-                    }
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.responseText);
-                    alert(xhr.responseText);
-                }
-            });
-        });
-        $("#select-angkatan").on('change', function() {
-            var id = this.value;
-            console.log(id);
-            $.ajax({
-                method: 'get',
-                url: "{{ route('getangkatan', ':id') }}".replace(':id', id), // Pass the id parameter
-                success: function(result) {
-                    if (result.msg == 'berhasil') {
-                        $('#select-domain').find('option').remove().end();
-                        $('#select-domain').append(result.data);
-                    } else {
-                        $('#select-domain').find('option').remove().end();
-                        $('#select-domain').append(result.data);
-                        $('#select-domain').trigger('change');
-                        $('#select-domain').select2({
-                            theme: "bootstrap",
-                            width: "100%"
-                        });
-                    }
-                },
-                error: function(xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.responseText);
-                    alert(xhr.responseText);
-                }
-            });
         });
     </script>
 

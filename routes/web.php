@@ -20,9 +20,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [DataController::class, 'index'])->name('dashboard');
 Route::get('/kelas/create', [DataController::class, 'create'])->name('create');
 Route::post('/kelas/store', [DataController::class, 'store'])->name('store');
-Route::get('/kelas/{id}/edit', [DataController::class, 'edit'])->name('edit');
-Route::put('/kelas/{id}/update', [DataController::class, 'update'])->name('update');
-Route::delete('/kelas/{id}/destroy', [DataController::class, 'destroy'])->name('destroy');
+Route::get('/kelas/edit/{id}', [DataController::class, 'edit'])->name('edit');
+Route::put('/kelas/update/{id}', [DataController::class, 'update'])->name('update');
+Route::delete('/kelas/destroy/{id}', [DataController::class, 'destroy'])->name('destroy');
 Route::post('/kelas/get-kelas', [DataController::class, 'getKelas'])->name('getkelas');
 Route::post('/kelas/get-kelas-edit', [DataController::class, 'getKelasEdit'])->name('getkelasedit');
 Route::post('import/excel', [DataController::class, 'importExcel'])->name('import.excel');
