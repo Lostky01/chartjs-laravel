@@ -269,7 +269,7 @@
                             <div class="col-sm-3 mb-3">
                                 <div class="submit-button text-right responsive-button">
                                     <button type="submit" class="buttonadd">
-                                        ADD TO LIST
+                                        EDIT DATA
                                     </button>
                                 </div>
                             </div>

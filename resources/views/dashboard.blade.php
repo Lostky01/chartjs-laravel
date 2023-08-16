@@ -4,7 +4,7 @@
     <style>
         .my-custom-scrollbar {
             position: inherit;
-            height: 550px;
+            height: 490px;
             overflow: scroll;
         }
 
